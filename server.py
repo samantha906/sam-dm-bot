@@ -190,7 +190,8 @@ async def manychat_webhook(request: Request, background_tasks: BackgroundTasks):
     try:
         body = await request.json()
         subscriber_id = str(body.get("subscriber_id", ""))
-        message_text = str(body.get("message_text", ""))
+        # Accept both 'message_text' and 'message' field names from ManyChat
+        message_text = str(body.get("message_text") or body.get("message") or "")
         first_name = str(body.get("first_name", ""))
 
         if not subscriber_id or not message_text:
