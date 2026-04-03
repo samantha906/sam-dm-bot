@@ -3,7 +3,7 @@ services:
     name: sam-dm-bot
     runtime: docker
     repo: https://github.com/samantha906/sam-dm-bot
-    branch: master
+    branch: main
     plan: free
     envVars:
       - key: ANTHROPIC_API_KEY
