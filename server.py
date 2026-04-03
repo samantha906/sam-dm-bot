@@ -129,7 +129,7 @@ async def process_dm(subscriber_id: str, message_text: str, first_name: str):
         logger.info(f"[{subscriber_id}] Sending response to ManyChat...")
         async with httpx.AsyncClient(timeout=30.0) as client:
             mc_response = await client.post(
-                "https://api.manychat.com/fb/sending/sendContent",
+                "https://api.manychat.com/ig/sending/sendContent",
                 headers={
                     "Authorization": f"Bearer {MANYCHAT_API_KEY}",
                     "Content-Type": "application/json",
@@ -146,8 +146,7 @@ async def process_dm(subscriber_id: str, message_text: str, first_name: str):
                                 }
                             ]
                         }
-                    },
-                    "message_tag": "ACCOUNT_UPDATE"
+                    }
                 },
             )
             mc_response.raise_for_status()
@@ -158,7 +157,7 @@ async def process_dm(subscriber_id: str, message_text: str, first_name: str):
         try:
             async with httpx.AsyncClient(timeout=30.0) as client:
                 await client.post(
-                    "https://api.manychat.com/fb/sending/sendContent",
+                    "https://api.manychat.com/ig/sending/sendContent",
                     headers={
                         "Authorization": f"Bearer {MANYCHAT_API_KEY}",
                         "Content-Type": "application/json",
@@ -175,8 +174,7 @@ async def process_dm(subscriber_id: str, message_text: str, first_name: str):
                                     }
                                 ]
                             }
-                        },
-                        "message_tag": "ACCOUNT_UPDATE"
+                        }
                     },
                 )
                 logger.info(f"[{subscriber_id}] Fallback message sent.")
