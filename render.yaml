@@ -2,9 +2,8 @@ services:
   - type: web
     name: sam-dm-bot
     runtime: docker
-    repo: https://github.com/samantha906/sam-dm-bot
-    branch: main
     plan: free
+    healthCheckPath: /health
     envVars:
       - key: ANTHROPIC_API_KEY
         value: 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
@@ -14,4 +13,3 @@ services:
         value: claude-opus-4-5
       - key: PORT
         value: "8080"
-    healthCheckPath: /health
