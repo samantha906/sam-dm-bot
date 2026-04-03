@@ -3,13 +3,10 @@ services:
     name: sam-dm-bot
     runtime: docker
     plan: free
-    healthCheckPath: /health
     envVars:
       - key: ANTHROPIC_API_KEY
-        value: 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
+        sync: false
       - key: MANYCHAT_API_KEY
-        value: "3664892:e5051d118ecbc4f8204368c8d119cf33"
+        sync: false
       - key: CLAUDE_MODEL
-        value: claude-opus-4-5
-      - key: PORT
-        value: "8080"
+        value: claude-3-5-sonnet-20241022
